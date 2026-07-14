@@ -60,6 +60,22 @@ and right after this command, the conflicts occurred, we can use this
 ```git checkout --theirs path/to/conflict_files.cpp```
 and do not forget to add again :  ```git add path/to/conflict_file.cpp```  || actually you can ```git add .```
 
+and here now I've find one useful command here to share with you:
+what if you find out that your github repo name is to bad for usage , like "---name-_example"
+Yes,so you go to the github.com to change it. Then what you should do with the local repo related to it ?
+use ```git remote add <name> <url>``` to add it again ?
+
+If you did it : the system says : 
+```
+error: remote origin already exists.
+```
+
+So actually you should set url again :
+```
+git remote set-url origin <repo-url>
+```
+
+also : git status is a helpful tool --- used for looking up problems and the 
 
 
 
