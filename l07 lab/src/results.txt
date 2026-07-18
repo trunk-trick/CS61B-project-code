@@ -1,0 +1,42 @@
+Speed Test Results and Observations
+==================================
+
+1. InsertRandomSpeedTest
+------------------------
+MyHashMap significantly outperforms ULLMap for large N. ULLMap uses a linked list
+with O(N) put/get, while MyHashMap achieves O(1) amortized with proper hashing.
+MyHashMap performance is within a factor of 10 of Java's built-in HashMap,
+confirming that a well-implemented hash table gets close to industrial-strength.
+
+2. InsertInOrderSpeedTest
+-------------------------
+MyHashMap performance is unaffected by insertion order because the hash function
+determines bucket placement, not key ordering. ULLMap degrades further with
+ordered input since it always traverses the entire linked list.
+
+3. BucketsSpeedTest (Different Bucket Types)
+--------------------------------------------
+All bucket types (LinkedList, ArrayList, HashSet, Stack, ArrayDeque) show
+similar asymptotic performance. Since we iterate over the entire bucket to find
+a key, all offer O(bucket_size) search within a bucket. The choice of bucket
+type does not change the overall O(1) amortized complexity of the hash table.
+
+4. HashSet Buckets and Constant-Time Search
+-------------------------------------------
+Using HashSet as buckets does not improve asymptotic performance in our
+implementation because we still iterate over all elements using the Collection
+iterator. To leverage HashSet's O(1) contains(), we would need to override
+equals() and hashCode() on Node so that two Nodes with the same key are
+considered equal, and use contains() instead of linear search. Even then,
+amortized O(1) is already achieved by the hash table itself, so the benefit
+is marginal unless the hash function distributes poorly.
+
+5. HashMap vs TreeMap
+---------------------
+HashMaps are better when: unordered key traversal is acceptable, a good hash
+function exists, and O(1) average-case operations are desired. TreeMaps are
+better when: ordered key traversal is needed, or when worst-case O(log N)
+guarantees matter more than average-case O(1). Our BSTMap/TreeMap from Lab 06
+required O(log N) balanced tree operations, which are harder to implement
+correctly than a hash table, as shown by MyHashMap being within factor 10 of
+Java's HashMap while our BSTMap may not match Java's TreeMap as closely.
