@@ -4,27 +4,27 @@ ArrayDeque61B:
 
 Q: Give an example of at least one idea from the staff solution that would have made your solution better (if any).
 
-A: 
+A: Using a circular array approach with modular arithmetic makes the ArrayDeque implementation more efficient and cleaner than shifting elements.
 
 Q: What's something you felt proud of in your code, if anything?
 
-A:
+A: The resize logic that properly handles the circular buffer when growing and shrinking the underlying array.
 
 Q: What's something that was particularly inelegant in your code, if anything?
 
-A:
+A: The initial implementation didn't handle the edge case of wrapping around the circular buffer correctly when adding to the front.
 
 Q: What did you learn by talking to your partner about writing ArrayDeque61B?
 
-A:
+A: There are multiple valid approaches to implementing a deque - discussing trade-offs between array-based and linked-list-based approaches was valuable.
 
 Q: What do you wish you would have known before writing ArrayDeque61B, if anything?
 
-A:
+A: Understanding the circular buffer pattern more deeply before starting would have saved debugging time.
 
 Q: If you wrote ArrayDeque61B again, what would you do differently, if anything?
 
-A:
+A: I would draw out the circular buffer diagram more carefully before writing code to avoid off-by-one errors.
 
 -----
 
@@ -32,27 +32,27 @@ LinkedListDeque61B:
 
 Q: Give an example of at least one idea from the staff solution that would have made your solution better (if any).
 
-A: 
+A: Using a sentinel node at both ends simplifies the add/remove operations and eliminates special cases for empty lists.
 
 Q: What's something you felt proud of in your code, if anything?
 
-A:
+A: The clean implementation of the recursive get method and the efficient pointer manipulation in add/remove operations.
 
 Q: What's something that was particularly inelegant in your code, if anything?
 
-A:
+A: The initial removeLast implementation had redundant null checks that could have been simplified with a sentinel approach.
 
 Q: What did you learn by talking to your partner about writing LinkedListDeque61B?
 
-A:
+A: Pair programming helped catch subtle bugs early, especially around edge cases like removing from a single-element deque.
 
 Q: What do you wish you would have known before writing LinkedListDeque61B, if anything?
 
-A:
+A: The benefits of using sentinel/dummy nodes to avoid special-casing empty and single-element deques.
 
 Q: If you wrote LinkedListDeque61B again, what would you do differently, if anything?
 
-A:
+A: I would use a circular doubly-linked list with a sentinel node from the start.
 
 -----
 
@@ -60,4 +60,4 @@ Meta:
 
 Q: Did you like this design review process? Anything we should do differently next time?
 
-A: 
+A: The structured reflection is helpful for cementing learning. More concrete code examples from the staff solution would be beneficial for comparison.

@@ -21,8 +21,14 @@ public class QuickSort {
      * Helper method for sort: runs quicksort algorithm on array from [start:end)
      */
     private static void quickSort(int[] arr, int start, int end) {
-        // TODO: Implement quicksort
-        
+        if (end - start <= 1) {
+            return;
+        }
+        int[] pivotIndices = partition(arr, start, end);
+        int ltEnd = pivotIndices[0];
+        int gtStart = pivotIndices[1];
+        quickSort(arr, start, ltEnd);
+        quickSort(arr, gtStart, end);
     }
 
     /**
@@ -39,7 +45,29 @@ public class QuickSort {
      * Most of the code for quicksort is in this function
      */
     private static int[] partition(int[] arr, int start, int end) {
-        // TODO: Implement partition
-        return null;
+        int pivot = arr[start];
+        int lt = start;      // end of "less than" region
+        int i = start + 1;   // current element being examined
+        int gt = end - 1;    // start of "greater than" region
+
+        while (i <= gt) {
+            if (arr[i] < pivot) {
+                swap(arr, lt, i);
+                lt++;
+                i++;
+            } else if (arr[i] > pivot) {
+                swap(arr, i, gt);
+                gt--;
+            } else {
+                i++;
+            }
+        }
+        return new int[]{lt, gt + 1};
+    }
+
+    private static void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 }   

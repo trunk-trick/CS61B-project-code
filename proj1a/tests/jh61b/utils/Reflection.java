@@ -1,0 +1,10 @@
+package jh61b.utils;
+
+import java.lang.reflect.Field;
+import java.util.stream.Stream;
+
+public class Reflection {
+    public static Stream<Field> getFields(Class<?> c) {
+        return Stream.of(c.getDeclaredFields());
+    }
+}

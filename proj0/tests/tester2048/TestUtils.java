@@ -1,6 +1,5 @@
 package tester2048;
 
-import game2048rendering.Model;
 import game2048rendering.Side;
 import game2048logic.GameLogic;
 
