@@ -9,7 +9,6 @@ public class BSTMap <K extends Comparable<K>,V> implements Map61B<K, V> {
             private Node left;
             private Node right;
 
-            // config function
             public Node (K key,V value) {
                 this.key = key;
                 this.value = value;
@@ -26,8 +25,6 @@ public class BSTMap <K extends Comparable<K>,V> implements Map61B<K, V> {
         this.size = 0;
     }
 
-    // from easy to complex
-
     @Override
             public int size () {
         return size;
@@ -41,8 +38,6 @@ public class BSTMap <K extends Comparable<K>,V> implements Map61B<K, V> {
             public void put(K key, V value) {
         root = put_helper(root,key,value);
     }
-
-    // trace back to modify node , we possibly need to add a left son or right son we need to change its value.
 
     private Node put_helper(Node node,K key,V value) {
         if(node == null) {
@@ -100,17 +95,14 @@ public class BSTMap <K extends Comparable<K>,V> implements Map61B<K, V> {
         return new BSTMapIterator();
     }
 
-    // 迭代器内部类
     private class BSTMapIterator implements Iterator<K> {
         private Stack<Node> stack;
 
         public BSTMapIterator() {
             stack = new Stack<>();
-            // 从根节点开始，把最左边的路径全部压入栈
             pushLeft(root);
         }
 
-        // 辅助方法：将节点及其所有左子节点压入栈
         private void pushLeft(Node node) {
             while (node != null) {
                 stack.push(node);
@@ -128,9 +120,7 @@ public class BSTMap <K extends Comparable<K>,V> implements Map61B<K, V> {
             if (!hasNext()) {
                 throw new java.util.NoSuchElementException();
             }
-            // 弹出栈顶元素
             Node node = stack.pop();
-            // 如果有右子树，将右子树的最左路径压入栈
             pushLeft(node.right);
             return node.key;
         }

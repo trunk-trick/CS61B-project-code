@@ -74,8 +74,6 @@ public class RedBlackTree<T extends Comparable<T>> {
         newRoot.right = node;
         node.left = tmp;
 
-        //swap colors to make sure the tree a reasonable one.
-
         boolean tmpColor = node.isBlack;
         node.isBlack = newRoot.isBlack;
         newRoot.isBlack = tmpColor;
@@ -133,8 +131,6 @@ public class RedBlackTree<T extends Comparable<T>> {
      * @return
      */
     private RBTreeNode<T> insertHelper(RBTreeNode<T> node, T item) {
-        // use the recursive to find the place to insert
-
         if(node == null) {
             return new RBTreeNode<>(false,item);
         }
@@ -151,8 +147,6 @@ public class RedBlackTree<T extends Comparable<T>> {
         } else {
             return node;
         }
-
-        //three cases to deal with
 
         if(isRed(node.left) && isRed(node.left.left)) {
             node = rotateRight(node);
